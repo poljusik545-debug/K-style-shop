@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-STYLE SHOP — Idol-inspired fashion</title>
+<style>
+:root { color-scheme: light dark; --lav:#d8c8f1; --lavdeep:#765b9b; --milk:#fbf8f2; --ink:#28242f; --muted:#756d7e; --line:#e8e0ed; }
+* { box-sizing:border-box; }
+body { margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:light-dark(#f6f2fa,#17151b); color:light-dark(var(--ink),#f6f1fb); }
+button, input, select { font:inherit; }
+button { cursor:pointer; }
+#app { min-height:100vh; background:light-dark(var(--milk),#17151b); color:light-dark(var(--ink),#f6f1fb); }
+.announcement { padding:9px 16px; text-align:center; font-size:11px; letter-spacing:.12em; background:light-dark(#e6daf7,#31283d); color:light-dark(#514063,#f0e6ff); }
+header { position:sticky; top:0; z-index:10; background:light-dark(rgba(251,248,242,.94),rgba(23,21,27,.94)); backdrop-filter:blur(12px); border-bottom:1px solid light-dark(var(--line),#37303f); }
+.nav { max-width:1180px; margin:auto; padding:17px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.logo { font-weight:900; letter-spacing:-.07em; font-size:22px; white-space:nowrap; }.logo span { color:var(--lavdeep); }
+.navlinks { display:flex; gap:23px; align-items:center; font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+.navlinks a { color:inherit; text-decoration:none; }.navlinks a:hover { color:var(--lavdeep); }
+.navright { display:flex; gap:8px; align-items:center; }
+.iconbtn { border:1px solid light-dark(var(--line),#37303f); background:transparent; color:inherit; border-radius:99px; padding:9px 12px; font-size:12px; }
+main { max-width:1180px; margin:auto; padding:24px; }
+.hero { display:grid; grid-template-columns:1fr 1fr; min-height:365px; border-radius:22px; overflow:hidden; background:light-dark(#eee5fa,#292231); }
+.herocopy { padding:clamp(28px,5vw,62px); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; }
+.eyebrow { font-size:10px; letter-spacing:.19em; text-transform:uppercase; color:var(--lavdeep); font-weight:800; }
+h1 { font-size:clamp(38px,5.5vw,68px); line-height:.94; letter-spacing:-.075em; margin:18px 0; max-width:480px; }
+.herocopy p { max-width:330px; line-height:1.65; color:light-dark(#655c70,#d0c5dc); font-size:13px; }
+.primary { border:0; border-radius:99px; padding:13px 20px; margin-top:14px; background:light-dark(var(--ink),#f3eafa); color:light-dark(white,#27212f); font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:800; }
+.heroart { position:relative; min-height:330px; overflow:hidden; background:linear-gradient(135deg,#d8c8f1 0%,#f0e7f6 46%,#bda8dc 100%); }
+.heroart:before { content:"K-FASHION\A EDITION 01"; white-space:pre; position:absolute; top:24px; right:25px; color:#6d548c; font-size:10px; letter-spacing:.16em; line-height:1.8; text-align:right; z-index:2; }
+.orb { position:absolute; width:250px; height:250px; border-radius:50%; background:rgba(255,255,255,.38); top:44px; left:calc(50% - 125px); }
+.figure { position:absolute; bottom:-25px; left:calc(50% - 84px); width:168px; height:300px; }
+.head { position:absolute; top:6px; left:52px; width:64px; height:74px; border-radius:45% 45% 48% 48%; background:#d3a48e; box-shadow:inset 12px 0 0 rgba(88,52,60,.15); z-index:3; }
+.hair { position:absolute; top:-7px; left:43px; width:83px; height:79px; border-radius:52% 52% 30% 25%; background:#28232f; z-index:4; clip-path:polygon(4% 0,95% 0,100% 65%,83% 100%,70% 59%,55% 89%,35% 59%,12% 100%,0 65%); }
+.neck { position:absolute; top:67px; left:76px; width:22px; height:32px; background:#d3a48e; z-index:2; }
+.bodyshape { position:absolute; top:87px; left:34px; width:100px; height:135px; background:#f7f3f9; border:4px solid #fff; border-radius:27px 27px 12px 12px; transform:rotate(-2deg); z-index:2; }
+.tie { position:absolute; top:94px; left:76px; width:20px; height:56px; background:#8d70b2; clip-path:polygon(25% 0,75% 0,100% 80%,50% 100%,0 80%); z-index:4; }
+.skirt { position:absolute; top:208px; left:21px; width:126px; height:88px; background:repeating-linear-gradient(90deg,#51405f 0 12px,#6f5b84 12px 24px); clip-path:polygon(18% 0,82% 0,100% 100%,0 100%); z-index:2; }
+.arm { position:absolute; top:99px; left:15px; width:27px; height:115px; border-radius:18px; background:#f7f3f9; transform:rotate(13deg); z-index:1; }.arm.right { left:125px; transform:rotate(-21deg); height:106px; }
+.artlabel { position:absolute; left:22px; bottom:20px; color:#59456f; font-size:10px; letter-spacing:.15em; text-transform:uppercase; }
+.sectionhead { display:flex; align-items:end; justify-content:space-between; gap:12px; margin:38px 0 17px; }.sectionhead h2 { font-size:25px; letter-spacing:-.055em; margin:0; }.sectionhead p { color:var(--muted); font-size:12px; margin:7px 0 0; }
+.filters { display:flex; gap:8px; flex-wrap:wrap; margin:0 0 18px; }.filter { border:1px solid light-dark(var(--line),#393240); color:inherit; background:transparent; border-radius:99px; padding:8px 13px; font-size:11px; }.filter.active { background:light-dark(#e7dcf6,#40324f); border-color:#c7b2e4; }
+.products { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:15px; }
+.product { min-width:0; }.productvisual { position:relative; aspect-ratio: .79; overflow:hidden; border-radius:15px; display:flex; align-items:center; justify-content:center; }
+.productvisual:after { content:""; position:absolute; width:78%; height:70%; border:1px solid rgba(255,255,255,.45); border-radius:50%; transform:rotate(-25deg); }
+.pv1 { background:linear-gradient(140deg,#e5d9f3,#c8b4e2); }.pv2 { background:linear-gradient(140deg,#ece5dc,#d2c6d8); }.pv3 { background:linear-gradient(140deg,#d8d0e9,#a998c7); }.pv4 { background:linear-gradient(140deg,#eee0f0,#c7b3dc); }
+.garment { position:relative; z-index:1; filter:drop-shadow(0 10px 8px rgba(51,37,63,.17)); }
+.jacket { width:60%; height:62%; background:linear-gradient(90deg,#2f2c38 0 20%,#f7f3f9 20% 80%,#2f2c38 80%); clip-path:polygon(25% 0,40% 5%,60% 5%,75% 0,100% 20%,83% 42%,76% 32%,82% 100%,18% 100%,24% 32%,17% 42%,0 20%); }
+.top { width:48%; height:50%; background:linear-gradient(90deg,#6e598a,#bca7d8,#6e598a); clip-path:polygon(20% 0,38% 10%,62% 10%,80% 0,100% 23%,82% 38%,73% 29%,78% 100%,22% 100%,27% 29%,18% 38%,0 23%); }
+.pants { width:56%; height:75%; background:linear-gradient(90deg,#35313e 0 47%,#7b6a92 47% 53%,#35313e 53%); clip-path:polygon(7% 0,93% 0,85% 100%,56% 100%,49% 34%,42% 100%,13% 100%); }
+.bag { width:54%; height:47%; border:10px solid #eee7f7; border-bottom-width:17px; background:#a18bbf; border-radius:13px 13px 20px 20px; position:relative; }.bag:before { content:""; position:absolute; width:48%; height:45%; border:7px solid #eee7f7; border-bottom:0; border-radius:30px 30px 0 0; left:17%; top:-34px; }
+.tag { position:absolute; left:10px; top:10px; z-index:2; padding:6px 8px; background:rgba(255,255,255,.82); color:#4d3e5e; border-radius:99px; font-size:9px; text-transform:uppercase; letter-spacing:.08em; }.heart { position:absolute; top:9px; right:9px; z-index:2; border:0; width:31px; height:31px; border-radius:50%; background:rgba(255,255,255,.82); color:#4d3e5e; font-size:17px; }
+.productmeta { padding:10px 2px 0; }.productmeta h3 { margin:0 0 5px; font-size:12px; font-weight:700; }.productmeta p { margin:0; color:var(--muted); font-size:11px; }.price { margin-top:8px; display:flex; justify-content:space-between; align-items:center; font-size:12px; font-weight:800; }.add { border:1px solid light-dark(var(--line),#403847); border-radius:50%; width:27px; height:27px; background:transparent; color:inherit; }
+.inspo { margin-top:40px; padding:25px; border-radius:20px; background:light-dark(#f0e8f8,#28212f); display:flex; align-items:center; justify-content:space-between; gap:20px; }.inspo h2 { margin:7px 0; font-size:25px; letter-spacing:-.05em; }.inspo p { margin:0; color:var(--muted); font-size:12px; line-height:1.6; max-width:450px; }
+footer { margin-top:42px; padding:25px 0 32px; border-top:1px solid light-dark(var(--line),#37303f); display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:10px; letter-spacing:.06em; }
+.drawerback { position:fixed; inset:0; background:rgba(20,14,28,.35); z-index:20; display:none; }.drawer { position:absolute; right:0; top:0; height:100%; width:min(390px,92vw); background:light-dark(var(--milk),#1e1a23); padding:23px; box-shadow:-10px 0 35px rgba(0,0,0,.15); display:flex; flex-direction:column; }.drawerback.open { display:block; }.drawerhead { display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:15px; }.drawerhead h2 { margin:0; font-size:20px; }.cartitems { padding:16px 0; flex:1; overflow:auto; font-size:13px; }.cartrow { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); gap:12px; }.checkout { padding:13px; background:#d8c8f1; color:#2a2235; border:0; border-radius:99px; font-weight:800; letter-spacing:.06em; }
+.toast { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); background:#2c2534; color:white; padding:12px 18px; border-radius:99px; font-size:12px; z-index:30; display:none; box-shadow:0 6px 25px #0002; }
+@media(max-width:760px){ .nav { padding:14px 16px; }.navlinks { display:none; } main { padding:15px; }.hero { grid-template-columns:1fr; }.herocopy { padding:28px; }.heroart { min-height:270px; }.products { grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 12px; }.sectionhead { margin-top:30px; }.inspo { align-items:flex-start; flex-direction:column; }.inspo .primary { margin-top:0; } footer { flex-direction:column; } }
+@media(prefers-color-scheme:dark){ .heroart { filter:brightness(.92); } }
+</style>
+</head>
+<body><div id="app">
+<div class="announcement">✦ IDOL-INSPIRED FASHION · FIND YOUR NEXT FIT ✦</div>
+<header><div class="nav"><div class="logo">K-STYLE <span>SHOP</span></div><nav class="navlinks"><a href="#shop">Shop all</a><a href="#shop" data-filter-link="clothing">Clothing</a><a href="#shop" data-filter-link="accessories">Accessories</a><a href="#inspo">Idol inspo</a></nav><div class="navright"><button class="iconbtn" id="searchBtn" aria-label="Search">⌕</button><button class="iconbtn" id="cartBtn">♡ Bag <span id="cartCount">0</span></button></div></div></header>
+<main>
+<section class="hero"><div class="herocopy"><div class="eyebrow">The idol edit · 001</div><h1>YOUR BIAS.<br>YOUR STYLE.</h1><p>Stage-inspired pieces, Korean streetwear and little details that make an outfit feel like your own era.</p><button class="primary" id="heroShop">Explore the edit ↗</button></div><div class="heroart" aria-label="Stylized fashion illustration"><div class="orb"></div><div class="figure"><div class="arm"></div><div class="arm right"></div><div class="neck"></div><div class="head"></div><div class="hair"></div><div class="bodyshape"></div><div class="tie"></div><div class="skirt"></div></div><div class="artlabel">Lavender stage / studio collection</div></div></section>
+<section id="shop"><div class="sectionhead"><div><div class="eyebrow">Curated for your next era</div><h2>Shop the edit</h2><p>Idol-inspired looks, made for your everyday.</p></div><span style="font-size:11px;color:var(--muted)" id="resultCount">04 pieces</span></div>
+<div class="filters" role="group" aria-label="Filter products"><button class="filter active" data-filter="all">All pieces</button><button class="filter" data-filter="clothing">Clothing</button><button class="filter" data-filter="accessories">Accessories</button><button class="filter" data-filter="stage">Stage-inspired</button></div>
+<div class="products" id="products">
+<article class="product" data-category="clothing stage" data-name="stage varsity jacket"><div class="productvisual pv1"><span class="tag">Fan fave</span><button class="heart" aria-label="Save Stage varsity jacket">♡</button><div class="garment jacket"></div></div><div class="productmeta"><h3>Stage varsity jacket</h3><p>Layer up · Lavender edit</p><div class="price"><span>€42.00</span><button class="add" data-add="Stage varsity jacket" data-price="42">+</button></div></div></article>
+<article class="product" data-category="clothing" data-name="dream knit top"><div class="productvisual pv2"><span class="tag">New drop</span><button class="heart" aria-label="Save Dream knit top">♡</button><div class="garment top"></div></div><div class="productmeta"><h3>Dream knit top</h3><p>Soft layers · Cream</p><div class="price"><span>€24.00</span><button class="add" data-add="Dream knit top" data-price="24">+</button></div></div></article>
+<article class="product" data-category="clothing stage" data-name="spotlight track pants"><div class="productvisual pv3"><button class="heart" aria-label="Save Spotlight track pants">♡</button><div class="garment pants"></div></div><div class="productmeta"><h3>Spotlight track pants</h3><p>Off-duty idol · Charcoal</p><div class="price"><span>€36.00</span><button class="add" data-add="Spotlight track pants" data-price="36">+</button></div></div></article>
+<article class="product" data-category="accessories" data-name="mini stage bag"><div class="productvisual pv4"><span class="tag">Last call</span><button class="heart" aria-label="Save Mini stage bag">♡</button><div class="garment bag"></div></div><div class="productmeta"><h3>Mini stage bag</h3><p>Little statement · Lilac</p><div class="price"><span>€19.00</span><button class="add" data-add="Mini stage bag" data-price="19">+</button></div></div></article>
+</div></section>
+<section class="inspo" id="inspo"><div><div class="eyebrow">Outfit inspiration</div><h2>Dress like your bias ♡</h2><p>Discover the vibe, recreate the mood, make it yours. A little stage energy for everyday outfits.</p></div><button class="primary" id="inspoBtn">Find your vibe ↗</button></section>
+<footer><span>© K-STYLE SHOP · CONCEPT PREVIEW</span><span>Idol-inspired fashion · Not affiliated with any artist or agency</span></footer>
+</main>
+<div class="drawerback" id="drawerback"><aside class="drawer" aria-label="Shopping bag"><div class="drawerhead"><h2>Your bag ♡</h2><button class="iconbtn" id="closeCart">Close ✕</button></div><div class="cartitems" id="cartitems">Your bag is waiting for its first look.</div><div><div style="display:flex;justify-content:space-between;margin:14px 0 18px;font-weight:800"><span>Subtotal</span><span id="subtotal">€0.00</span></div><button class="checkout" id="checkout" style="width:100%">Preview checkout</button><p style="font-size:10px;color:var(--muted);line-height:1.5">Demo only — this preview does not take payments or place real orders.</p></div></aside></div>
+<div class="toast" id="toast"></div></div>
+<script>
+const cart=[]; let activeFilter='all';
+const toast=document.getElementById('toast'); let toastTimer;
+function showToast(message){toast.textContent=message;toast.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.style.display='none',2200)}
+function updateCart(){document.getElementById('cartCount').textContent=cart.length;const box=document.getElementById('cartitems');box.innerHTML='';if(!cart.length){box.textContent='Your bag is waiting for its first look.';}else{cart.forEach((item,i)=>{const row=document.createElement('div');row.className='cartrow';row.innerHTML='<span>'+item.name+'</span><span>€'+item.price.toFixed(2)+' <button class="iconbtn" data-remove="'+i+'" aria-label="Remove item">×</button></span>';box.appendChild(row);});}document.getElementById('subtotal').textContent='€'+cart.reduce((s,i)=>s+i.price,0).toFixed(2)}
+function setFilter(filter){activeFilter=filter;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));let n=0;document.querySelectorAll('.product').forEach(p=>{const show=filter==='all'||p.dataset.category.split(' ').includes(filter);p.style.display=show?'':'none';if(show)n++});document.getElementById('resultCount').textContent=String(n).padStart(2,'0')+' pieces'}
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>setFilter(b.dataset.filter)));
+document.querySelectorAll('[data-filter-link]').forEach(a=>a.addEventListener('click',()=>setFilter(a.dataset.filterLink)));
+document.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>{cart.push({name:b.dataset.add,price:Number(b.dataset.price)});updateCart();showToast('Added to your bag ♡')}));
+document.addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(b){cart.splice(Number(b.dataset.remove),1);updateCart()}});
+document.querySelectorAll('.heart').forEach(b=>b.addEventListener('click',()=>{b.textContent=b.textContent==='♡'?'♥':'♡';showToast(b.textContent==='♥'?'Saved to your wishlist ♡':'Removed from wishlist')}));
+document.getElementById('cartBtn').addEventListener('click',()=>document.getElementById('drawerback').classList.add('open'));
+document.getElementById('closeCart').addEventListener('click',()=>document.getElementById('drawerback').classList.remove('open'));
+document.getElementById('drawerback').addEventListener('click',e=>{if(e.target.id==='drawerback')e.currentTarget.classList.remove('open')});
+document.getElementById('heroShop').addEventListener('click',()=>document.getElementById('shop').scrollIntoView({behavior:'smooth'}));
+document.getElementById('inspoBtn').addEventListener('click',()=>showToast('Idol outfit inspo is coming soon ♡'));
+document.getElementById('checkout').addEventListener('click',()=>showToast('Demo only — no real checkout yet ♡'));
+document.getElementById('searchBtn').addEventListener('click',()=>{const term=prompt('Search K-STYLE SHOP');if(term!==null){const q=term.toLowerCase().trim();let n=0;document.querySelectorAll('.product').forEach(p=>{const show=!q||p.dataset.name.includes(q);p.style.display=show?'':'none';if(show)n++});document.getElementById('resultCount').textContent=String(n).padStart(2,'0')+' pieces';showToast(n+' matching pieces')}});
+</script></div></body></html>
